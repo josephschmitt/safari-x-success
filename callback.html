@@ -2,54 +2,58 @@
 <head>
 <meta charset="UTF-8">
 <title>Safari X-Callback</title>
-
-<script type="text/javascript">
-var params = function () {
-	var query_string = {};
-	var query = window.location.search.substring(1);
-	var vars = query.split("&");
-	var pair;
-	
-	for (var i=0;i<vars.length;i++) {
-		pair = vars[i].split("=");
-		// If first entry with this name
-		if (typeof query_string[pair[0]] === "undefined") {
-			query_string[pair[0]] = decodeURIComponent(pair[1]);
-		} 
-		// If second entry with this name
-		else if (typeof query_string[pair[0]] === "string") {
-			var arr = [ query_string[pair[0]], decodeURIComponent(pair[1]) ];
-			query_string[pair[0]] = arr;
-		} 
-		// If third or later entry with this name
-		else {
-		  query_string[pair[0]].push(pair[1]);
-		}
-	}
-	
-	return query_string;
-} ();
-
-function init() {
-	// Need to run this on an interval since Safari on iOS does not fire the load event again when coming back to this page
-	var interval = setInterval(function() {
-		if (window.history.state && window.history.state['x-success']) {
-			window.location = window.history.state["x-success"];
-			clearInterval(interval);
-		}
-		else if (params.url) {
-			window.history.replaceState(params, null, null);
-			window.location = params.url;
-		}
-		else {
-			// Bail on this interval if none of the proper params are present
-			clearInterval(interval);
-		}
-	}, 500);
-}
-</script>
-
 </head>
-<body onload='init();'>
+<body onload=''>
+	<script type="text/javascript">
+	var params = function () {
+		var query_string = {};
+		var query = window.location.hash.substring(1);
+		var vars = query.split("&");
+		var pair;
+	
+		for (var i=0;i<vars.length;i++) {
+			pair = vars[i].split("=");
+			// If first entry with this name
+			if (typeof query_string[pair[0]] === "undefined") {
+				query_string[pair[0]] = decodeURIComponent(pair[1]);
+			} 
+			// If second entry with this name
+			else if (typeof query_string[pair[0]] === "string") {
+				var arr = [ query_string[pair[0]], decodeURIComponent(pair[1]) ];
+				query_string[pair[0]] = arr;
+			} 
+			// If third or later entry with this name
+			else {
+			  query_string[pair[0]].push(pair[1]);
+			}
+		}
+	
+		return query_string;
+	} ();
+	
+	window.addEventListener('load', function() {
+		var interval;
+		window.history.state = null;
+		
+		function checkHistory() {
+			clearInterval(interval);
+			if (window.history.state && window.history.state['x-success']) {
+				window.location = window.history.state["x-success"];
+			}
+			else if (params.url) {
+				window.history.replaceState(params, null, null);
+				
+				setTimeout(function() {
+					window.location = params.url;
+					
+					// Need to run this on an interval since Safari on iOS does not always fire the load event again when coming back to this page
+					interval = setInterval(checkHistory, 500);
+				}, 10);
+			}
+		}
+		
+		checkHistory();
+	});
+	</script>
 </body>
 </html>
