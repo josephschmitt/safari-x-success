@@ -1,10 +1,10 @@
 # Safari X-Success
 
-This is an empty shell page with some JavaScript in it that allows Mobile Safari on iOS to mimic Chrome on iOS's x-success back button behavior. It is based on Greg Pierce's post to do the same with iframes. This solution uses the JavaScript history API instead of an iframe, which feels a bit cleaner to me.
+This is an empty shell page with some JavaScript in it that allows Mobile Safari on iOS to mimic Chrome on iOS's x-success back button behavior. It is based on [Greg Pierce's](http://agiletortoise.com/blog/2014/02/28/mimic-x-callback-url-in-mobile-safari/) post to do the same with iframes. This solution uses the JavaScript history API instead of an iframe, which feels a bit cleaner to me.
 
 ## Usage
 
-The URL scheme is identical to Greg's post, with one small difference being the URL itself. Point to the raw Github version of this page instead of to one hosted on Agile Tortoise.
+The URL scheme is identical to [Greg's post](http://agiletortoise.com/blog/2014/02/28/mimic-x-callback-url-in-mobile-safari/), with one small difference being the URL itself. Point to the raw Github version of this page instead of to one hosted on Agile Tortoise.
 
 ````
 https://rawgithub.com/josephschmitt/safari-x-success/master/callback.html?
