@@ -7,7 +7,7 @@ This is an empty shell page with some JavaScript in it that allows Mobile Safari
 The URL scheme is very similar to Greg's post, with two small differences: 
 
 1. The URL itself points to the callback.html page in this repository directly. This is for a combination of laziness and security; you can see the source code on Github and trust I'm not stealing your browser sessions :-).
-2. Use a hash (#) instead of query parameter (?) for the parameters. This is so that Safari treats all of the pages with different parameters as a single page, and will just re-load the page if it's already open in your browser instead of opening up a new page. This means you'll only ever have at most one x-success browser window open instead of a bunch. This should help mitigate the problem with not being able to close the window when jumping back to the x-success app.
+2. Use a hash (#) instead of a question mark (?) to separate the parameters from the URL. This is so that Safari treats all of the pages with different parameters as a single page, and will just re-load the page if it's already open in your browser instead of opening up a new page. This means you'll only ever have at most one x-success browser window open instead of a bunch. This should help mitigate the problem with not being able to close the window when jumping back to the x-success app.
 
 ````
 https://rawgithub.com/josephschmitt/safari-x-success/master/callback.html#
