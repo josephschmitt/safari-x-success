@@ -11,9 +11,15 @@ The URL scheme is very similar to Greg's post, with two small differences:
 
 ````
 https://rawgithub.com/josephschmitt/safari-x-success/master/callback.html#
-	url=[[selection]]
+	url={{http://your-url.com}}
 	&x-success={{tweetbot://}}
 	&x-source={{Source Friendly Name}} //this is optional. If submitted it will show up as the page name.
+````
+
+Here's a live example that opens [MacStories](http://macstories.net) and then Tweetbot if you go back.
+
+````
+https://rawgithub.com/josephschmitt/safari-x-success/master/callback.html#url=http://macstories.net&x-success=tweetbot://&x-source=Tweetbot
 ````
 
 This will open up Mobile Safari and instantly redirect the browser to the url at the url parameter. Then, if you hit the back button to return to the initial page, it'll bounce you back to whatever url scheme is defined in x-success. Quick tip: did you navigate a few pages but now want to quickly return to the x-success page? Tap-and-hold on the back arrow in Safari and you'll see the page at the bottom of the list. If you submitted the x-source parameter, the page will even use it as its name.
