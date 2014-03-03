@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Safari-x-success by josephschmitt</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Safari-x-success</h1>
+        <p>A hack to get Mobile Safari to mimic Chrome on iOS&#39;s back button behavior.</p>
+
+        <p class="view"><a href="https://github.com/josephschmitt/safari-x-success">View the Project on GitHub <small>josephschmitt/safari-x-success</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/josephschmitt/safari-x-success/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/josephschmitt/safari-x-success/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/josephschmitt/safari-x-success">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="what" class="anchor" href="#what"><span class="octicon octicon-link"></span></a>What?</h1>
+
+<p>On iOS, the <a href="http://x-callback-url.com/">x-callback-url</a> protocol is a system a clever developer came up with to give applications a way to communicate with each other. One of the things applications that conforms to this protocol can do is communicate with another app after a primary action has been performed. For example, if you launch <a href="http://tapbots.com/tweetbot/">Tweetbot</a> from the <a href="http://agiletortoise.com/drafts/">Drafts app</a>, you can tell Tweetbot to return to Drafts once a tweet has been posted.</p>
+
+<p>However, since x-callback-url isn't built-in to iOS natively, Apple's apps — such as Safari — don't support it. xsuc.es attempts to bring this functionality to iOS's default browser, Safari, through the use of a blank webpage and some JavaScript.</p>
+
+<h1>
+<a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>Why?</h1>
+
+<p>Well, Chrome for iOS uses this x-success stuff to great effect: it gives the browser a back button to return to the app it was launched from. So, if you open a link in Chrome from Tweetbot — or a mail client like Gmail — you'll get a back button in the browser to return to Gmail once you're done with the webpage you're on. Like so:</p>
+
+<p>This is a much nicer and quicker flow than tapping on the tabs manager, closing the tab, double-tapping the home button, switching apps, etc. Trust me on this.</p>
+
+<h1>
+<a name="sooo-how-does-this-all-work" class="anchor" href="#sooo-how-does-this-all-work"><span class="octicon octicon-link"></span></a>Sooo... how does this all work?</h1>
+
+<p>It's simple, really. Instead of opening up a URL directly, you open the URL to xsuc.es and pass in some extra options:</p>
+
+<ul>
+<li>
+<strong>url</strong>: This is the URL you want to load up.</li>
+<li>
+<strong>x-success</strong>: This is the URL scheme you want to load when you tap back. Here's a <a href="http://handleopenurl.com">list of some apps</a> and their schemes.</li>
+<li>
+<strong>x-source</strong>: This is the name of the app. It'll show up in your browser's history. This is optional.</li>
+</ul><p>So what does this look like when you put it all together? For the example in the above section, something like this:</p>
+
+<p><a href="http://xsuc.es/#">http://xsuc.es/#</a><em><em>url</em></em>=<strong><a href="http://macstories.net">http://macstories.net</a></strong>&amp;<em>x-success</em>=<strong>tweetbot://</strong>&amp;<em>x-source</em>=<strong>Tweetbot</strong></p>
+
+<p>This will load up the <a href="http://macstories.net">MacStories</a> home page, and when you tap the browser back button, it'll bounce you back to Tweetbot. And that's it! If you want to find out more, check out the <a href="https://github.com/josephschmitt/safari-x-success">project on GitHub</a>, or read all about it <a href="http://joe.sh/safari-x-success">on my blog</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/josephschmitt">josephschmitt</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
