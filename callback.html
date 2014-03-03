@@ -48,6 +48,7 @@
 				setTimeout(function() {
 					// Use the popstate event to check for when you navigate back to this page since Safari on iOS does not always fire the load event again when coming back
 					window.addEventListener('popstate', function() {
+						window.onpopstate = null;
 						checkHistory();
 					});
 					
