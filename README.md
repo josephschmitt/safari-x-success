@@ -16,12 +16,12 @@ https://rawgithub.com/josephschmitt/safari-x-success/master/callback.html#
 	&x-source={{Source Friendly Name}} //this is optional. If submitted it will show up as the page name.
 ````
 
-Here's a live example that opens [MacStories](http://macstories.net) and then Tweetbot if you go back.
+This will open up Mobile Safari and instantly redirect the browser to the url at the url parameter. Then, if you hit the back button to return to the initial page, it'll bounce you back to whatever url scheme is defined in x-success. Quick tip: did you navigate a few pages but now want to quickly return to the x-success page? Tap-and-hold on the back arrow in Safari and you'll see the page at the bottom of the list. If you submitted the x-source parameter, the page will even use it as its name.
+
+Here's a live example that opens [MacStories](http://macstories.net) and then Tweetbot if you go back:
 
 ````
 https://rawgithub.com/josephschmitt/safari-x-success/master/callback.html#url=http://macstories.net&x-success=tweetbot://&x-source=Tweetbot
 ````
-
-This will open up Mobile Safari and instantly redirect the browser to the url at the url parameter. Then, if you hit the back button to return to the initial page, it'll bounce you back to whatever url scheme is defined in x-success. Quick tip: did you navigate a few pages but now want to quickly return to the x-success page? Tap-and-hold on the back arrow in Safari and you'll see the page at the bottom of the list. If you submitted the x-source parameter, the page will even use it as its name.
 
 ~~The only downside to this system is there is no way to close the original page automatically via JavaScript like Chrome does. If anyone has any ideas how to do this, feel free to pull request.~~ This issue has been somewhat addressed by switching to using hash instead of question mark for the parameters separator. Now, if you alrady have the callback page open in Safari, Safari will not open a new window, it'll re-use the same one.
