@@ -1,7 +1,7 @@
 <html lang="en-US">
 <head>
-<meta charset="UTF-8">
-<title>Safari X-Callback</title>
+	<meta charset="UTF-8">
+	<title>Safari X-Callback</title>
 </head>
 <body onload=''>
 	<script type="text/javascript">
@@ -38,12 +38,13 @@
 		
 		function checkHistory() {
 			var params = getParams();
+			var pageTitle = params['x-source'] ? '⏎ ' + params['x-source'] : document.title;
 			
 			if (window.history.state && window.history.state['x-success']) {
 				window.location = window.history.state["x-success"];
 			}
 			else if (params.url) {
-				window.history.replaceState(params, null, null);
+				window.history.replaceState(params, pageTitle, null);
 				
 				setTimeout(function() {
 					// Use the popstate event to check for when you navigate back to this page since Safari on iOS does not always fire the load event again when coming back
