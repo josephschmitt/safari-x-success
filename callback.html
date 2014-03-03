@@ -33,8 +33,8 @@
 	
 	window.addEventListener('load', function() {
 		var interval;
-		window.history.state = null;
-		window.onpopstate = null;
+		window.history.replaceState();
+		window.removeEventListener('popstate', onURLChange);
 		
 		function checkHistory() {
 			var params = getParams();
@@ -42,20 +42,22 @@
 			
 			if (window.history.state && window.history.state['x-success']) {
 				window.location = window.history.state["x-success"];
+				window.history.replaceState(null, pageTitle, null);
 			}
 			else if (params.url) {
 				window.history.replaceState(params, pageTitle, null);
 				
 				setTimeout(function() {
 					// Use the popstate event to check for when you navigate back to this page since Safari on iOS does not always fire the load event again when coming back
-					window.addEventListener('popstate', function() {
-						window.onpopstate = null;
-						checkHistory();
-					});
-					
+					window.addEventListener('popstate', onURLChange);
 					window.location = params.url;
 				}, 10);
 			}
+		}
+		
+		function onURLChange() {
+			window.removeEventListener('popstate', onURLChange);
+			checkHistory();
 		}
 		
 		checkHistory();
