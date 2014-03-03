@@ -34,9 +34,9 @@
 	window.addEventListener('load', function() {
 		var interval;
 		window.history.state = null;
+		window.onpopstate = null;
 		
 		function checkHistory() {
-			clearInterval(interval);
 			if (window.history.state && window.history.state['x-success']) {
 				window.location = window.history.state["x-success"];
 			}
@@ -44,10 +44,12 @@
 				window.history.replaceState(params, null, null);
 				
 				setTimeout(function() {
-					window.location = params.url;
+					// Use the popstate event to check for when you navigate back to this page since Safari on iOS does not always fire the load event again when coming back
+					window.addEventListener('popstate', function() {
+						checkHistory();
+					});
 					
-					// Need to run this on an interval since Safari on iOS does not always fire the load event again when coming back to this page
-					interval = setInterval(checkHistory, 500);
+					window.location = params.url;
 				}, 10);
 			}
 		}
